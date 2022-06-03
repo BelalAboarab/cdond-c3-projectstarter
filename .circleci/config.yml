@@ -157,6 +157,8 @@ jobs:
       - destroy-environment
 
   destroy-environment:
+    docker:
+      - image: cimg/base:stable
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID.
     parameters:
       Worflow_ID:
