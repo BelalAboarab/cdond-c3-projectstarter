@@ -230,7 +230,7 @@ jobs:
       - run:
           name: Run migrations
           command: |
-            cd backend
+            cd backend/
             npm i
             npm run migrations > migrations_dump.txt
             cat migrations_dump.txt
@@ -239,7 +239,7 @@ jobs:
           command: |
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-              curl https://kvdb.io/92YfXoPTnRPnfBJX4gXdwA/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+              curl https://kvdb.io/92YfXoPTnRPnfBJX4gXdwA/migration_${CIRCLE_WORKFLOW_ID:0:7} -d '1'
             fi
       - destroy-environment
       - revert-migrations
